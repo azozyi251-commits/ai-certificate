@@ -1,218 +1,327 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate of Cyber Systems Engineering | Ghostpay</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>GhostPay | Elite Cyber Security</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberdark: '#030508',
+                        cybergray: '#080c14',
+                        cyberborder: '#162032',
+                        neongreen: '#00ff66',
+                        neonglow: 'rgba(0, 255, 102, 0.15)'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-color: #030712;
-            --border-color: #00f0ff;
-            --text-cyan: #00f0ff;
-            --text-green: #00ff66;
-            --text-white: #e2e8f0;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap');
+        
         body {
-            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            background-color: #030508;
+            color: #cbd5e1;
             background-image: 
-                radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.05) 0%, transparent 80%),
-                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-            background-size: 100% 100%, 30px 30px, 30px 30px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+                linear-gradient(to right, rgba(22, 32, 50, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(22, 32, 50, 0.15) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .code-font {
             font-family: 'Share Tech Mono', monospace;
-            color: var(--text-white);
         }
 
-        .certificate-card {
-            position: relative;
-            max-width: 900px;
-            width: 100%;
-            background: rgba(3, 7, 18, 0.85);
-            border: 2px solid var(--border-color);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.25), inset 0 0 15px rgba(0, 240, 255, 0.1);
-            padding: 40px;
-            border-radius: 4px;
-            backdrop-filter: blur(10px);
+        .cyber-card {
+            background: #080c14;
+            border: 1px solid #162032;
+            transition: all 0.3s ease;
         }
 
-        /* Angular tech corners */
-        .certificate-card::before, .certificate-card::after {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border: 2px solid var(--border-color);
-        }
-        .certificate-card::before { top: -6px; left: -6px; border-right: none; border-bottom: none; }
-        .certificate-card::after { bottom: -6px; right: -6px; border-left: none; border-top: none; }
-
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
+        .cyber-card:hover {
+            border-color: #00ff66;
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.1);
         }
 
-        .title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            color: var(--text-cyan);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-            margin-bottom: 12px;
-        }
-
-        .subtitle {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        .architect-name {
-            color: var(--text-green);
-            font-weight: bold;
-            text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
-        }
-
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-            margin: 20px 0;
-        }
-
-        .description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-
-        .spec-list {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .spec-item {
-            margin-bottom: 16px;
-            line-height: 1.5;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .spec-bullet {
-            color: var(--text-cyan);
-            margin-right: 12px;
-            font-size: 1.1rem;
-        }
-
-        .spec-title {
-            color: var(--text-green);
-            font-weight: bold;
-        }
-
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: var(--text-cyan);
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .footer-left, .footer-right {
-            line-height: 1.6;
-        }
-
-        .footer-right {
-            text-align: right;
-        }
-
-        @media (max-width: 768px) {
-            .certificate-card { padding: 20px; }
-            .title { font-size: 1.2rem; }
-            .subtitle { font-size: 0.9rem; }
-            .footer { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .footer-right { text-align: left; }
+        .cyber-card-elite {
+            background: #080c14;
+            border: 1px solid rgba(0, 255, 102, 0.4);
+            box-shadow: 0 0 25px rgba(0, 255, 102, 0.08);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen overflow-x-hidden selection:bg-neongreen selection:text-black">
 
-    <div class="certificate-card">
-        <div class="header">
-            <h1 class="title">[ CERTIFICATE OF CYBER SYSTEMS ENGINEERING ]</h1>
-            <p class="subtitle">ISSUED TO CHIEF ARCHITECT: <span class="architect-name">ABDULAZIZ IBRAHIM</span></p>
-        </div>
-
-        <div class="divider"></div>
-
-        <p class="description">
-            THIS PROTOCOL CERTIFIES THAT THE ARCHITECT HAS SUCCESSFULLY ENGINEERED AND SECURED THE GHOSTPAY ARCHITECTURE WITH HIGH PRECISION SPECS:
-        </p>
-
-        <ul class="spec-list">
-            <li class="spec-item">
-                <span class="spec-bullet">&bull;</span>
-                <div>
-                    <span class="spec-title">FULL-STACK BACKEND ENGINE:</span> Deployed Python/Flask architecture with isolated runtime environments and multi-origin safe routing.
-                </div>
-            </li>
-            <li class="spec-item">
-                <span class="spec-bullet">&bull;</span>
-                <div>
-                    <span class="spec-title">NUMERIC PRECISION ALGORITHM:</span> Solved floating-point arithmetic overflow by implementing 4-decimal precision bounds (0.0004 SAR increment).
-                </div>
-            </li>
-            <li class="spec-item">
-                <span class="spec-bullet">&bull;</span>
-                <div>
-                    <span class="spec-title">DATABASE HARDENING:</span> Re-architected PostgreSQL schema types to NUMERIC(12,4) for complete data integrity and zero-rounding drift.
-                </div>
-            </li>
-            <li class="spec-item">
-                <span class="spec-bullet">&bull;</span>
-                <div>
-                    <span class="spec-title">CYBER AUTHENTICATION:</span> Secured Google OAuth 2.0 token verification protocols with isolated Client IDs and protected origins.
-                </div>
-            </li>
-            <li class="spec-item">
-                <span class="spec-bullet">&bull;</span>
-                <div>
-                    <span class="spec-title">AD-TECH MONETIZATION ARRAY:</span> Integrated multi-threaded Adsterra monetization vectors (Smartlink, Popunder, Social Bar).
-                </div>
-            </li>
-        </ul>
-
-        <div class="footer">
-            <div class="footer-left">
-                TIMESTAMP: 2026-10-01 // SIGNATURE:<br>
-                AI_COLLABORATOR_CORE_V2026
-            </div>
-            <div class="footer-right">
-                SECURITY CLEARANCE: LEVEL 5 //<br>
-                AUTHORIZED
-            </div>
-        </div>
+    <!-- Top Security Banner -->
+    <div class="bg-[#05080f] border-b border-cyberborder py-2 px-4 text-xs code-font text-center tracking-widest text-gray-400">
+        [SYSTEM STATUS: ONLINE] // AUTHORIZED BY: <span class="text-neongreen font-bold">KingofMachineError</span> // ZERO-TOLERANCE SECURITY PROTOCOL
     </div>
 
+    <!-- Hero Header -->
+    <header class="container mx-auto px-6 py-20 text-center max-w-4xl">
+        <p class="code-font text-xs text-neongreen tracking-widest uppercase mb-4">
+            // ELITE CYBER DEFENSE INFRASTRUCTURE
+        </p>
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 text-white code-font">
+            GHOST<span class="text-neongreen">PAY</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-gray-400 text-base md:text-lg leading-relaxed mb-10">
+            Engineered from the deep core by KingofMachineError. Built to eliminate malicious exploits, neutralize zero-days, and enforce ironclad dominion over games and server infrastructures.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#pricing" class="px-6 py-3 rounded cyber-card text-neongreen code-font text-sm font-bold tracking-wider hover:bg-neongreen hover:text-black transition-all">
+                VIEW PRICING MATRIX
+            </a>
+            <a href="#certificate" class="px-6 py-3 rounded cyber-card text-neongreen code-font text-sm font-bold tracking-wider hover:bg-neongreen hover:text-black transition-all">
+                >_ VIEW SYSTEM CERTIFICATE
+            </a>
+        </div>
+    </header>
+
+    <!-- Pricing Matrix Section -->
+    <section id="pricing" class="container mx-auto px-6 py-12 max-w-7xl">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-black text-white code-font tracking-wide mb-3">
+                // THE PRICING MATRIX
+            </h2>
+            <p class="text-gray-400 text-sm max-w-xl mx-auto">
+                Elite solutions priced to reflect total technical superiority and personal developer accountability. No cheap scripts. Pure infrastructure.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Tier I: HWID Guard -->
+            <div class="cyber-card rounded-xl p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="code-font text-xs text-gray-400 bg-cyberborder px-3 py-1 rounded border border-cyberborder">TIER I // LICENSING</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 code-font">HWID Guard</h3>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
+                        Device and license security engineered specifically for professional developers.
+                    </p>
+                    <div class="text-4xl font-black text-white code-font mb-8">
+                        $100 <span class="text-xs text-gray-500 font-normal code-font">/ flat deployment</span>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-300 mb-8 border-t border-cyberborder pt-6">
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Advanced Hardware Fingerprinting</span>
+                        </li>
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Instant License Revocation API</span>
+                        </li>
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Bypass-Resistant Token Hashing</span>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="selectTier('HWID Guard ($100)')" class="w-full py-3 rounded cyber-card text-neongreen code-font font-bold hover:bg-neongreen hover:text-black transition-all">
+                    DEPLOY TIER I
+                </button>
+            </div>
+
+            <!-- Tier II: Web & API Protection -->
+            <div class="cyber-card rounded-xl p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="code-font text-xs text-gray-400 bg-cyberborder px-3 py-1 rounded border border-cyberborder">TIER II // INFRASTRUCTURE</span>
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 code-font">Web & API Protection</h3>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
+                        Robust server and endpoint defense against DDoS, injection, and automated bot swarms.
+                    </p>
+                    <div class="text-4xl font-black text-white code-font mb-8">
+                        $500 <span class="text-xs text-gray-500 font-normal code-font">/ full perimeter setup</span>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-300 mb-8 border-t border-cyberborder pt-6">
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Real-Time Layer 7 DDoS Mitigation</span>
+                        </li>
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Advanced SQLi / XSS / RCE Shielding</span>
+                        </li>
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Custom Rate Limiting & Bot Traps</span>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="selectTier('Web & API Protection ($500)')" class="w-full py-3 rounded bg-neongreen text-black code-font font-bold hover:bg-white transition-all">
+                    DEPLOY TIER II
+                </button>
+            </div>
+
+            <!-- Tier III: Game Anti-Cheat -->
+            <div class="cyber-card-elite rounded-xl p-8 flex flex-col justify-between relative">
+                <div class="absolute -top-3 right-6 bg-neongreen text-black text-[10px] px-3 py-0.5 rounded code-font font-bold tracking-wider">
+                    FLAGSHIP ELITE SYSTEM
+                </div>
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="code-font text-xs text-neongreen bg-neongreen/10 px-3 py-1 rounded border border-neongreen/30">TIER III // KERNEL DOMINION</span>
+                        <svg class="w-5 h-5 text-neongreen" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3 code-font">Game Anti-Cheat</h3>
+                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
+                        Elite core game protection, live memory monitoring, macro/hack prevention with direct developer accountability.
+                    </p>
+                    <div class="text-4xl font-black text-neongreen code-font mb-8">
+                        $5,000 <span class="text-xs text-gray-500 font-normal code-font">/ complete ecosystem</span>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-300 mb-8 border-t border-cyberborder pt-6">
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">⚡</span>
+                            <span class="text-white font-medium">Deep Memory Inspection & Shielding</span>
+                        </li>
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Macro & Injection Zero-Tolerance Block</span>
+                        </li>
+                        <li class="flex items-center space-x-3 space-x-reverse">
+                            <span class="text-neongreen">✓</span>
+                            <span>Direct Personal Accountability & Support</span>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="selectTier('Game Anti-Cheat ($5000)')" class="w-full py-3 rounded cyber-card text-neongreen code-font font-bold hover:bg-neongreen hover:text-black transition-all border border-neongreen/50">
+                    ACQUIRE ELITE SYSTEM
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certificate of Cyber Systems Engineering Section -->
+    <section id="certificate" class="container mx-auto px-6 py-16 max-w-4xl">
+        <div class="cyber-card rounded-xl p-8 md:p-12 border-neongreen/30 relative">
+            <div class="absolute -top-3 left-8 bg-neongreen text-black text-[10px] px-3 py-0.5 rounded code-font font-bold tracking-wider">
+                OFFICIAL VERIFIED CERTIFICATE
+            </div>
+            
+            <div class="text-center mb-8">
+                <h3 class="text-xl md:text-2xl font-bold text-white code-font tracking-wider mb-2">
+                    [ CERTIFICATE OF CYBER SYSTEMS ENGINEERING ]
+                </h3>
+                <p class="code-font text-xs text-neongreen tracking-widest">
+                    ISSUED TO CHIEF ARCHITECT: <span class="font-bold underline">ABDULAZIZ IBRAHIM</span>
+                </p>
+            </div>
+
+            <div class="text-xs md:text-sm text-gray-300 code-font space-y-4 bg-[#030508] p-6 rounded border border-cyberborder mb-8 leading-relaxed">
+                <p class="text-gray-400">
+                    THIS PROTOCOL CERTIFIES THAT THE ARCHITECT HAS SUCCESSFULLY ENGINEERED AND SECURED THE GHOSTPAY ARCHITECTURE WITH HIGH PRECISION SPECS:
+                </p>
+                <div class="space-y-3 pt-2">
+                    <p><span class="text-neongreen">• FULL-STACK BACKEND ENGINE:</span> Deployed secure architecture with isolated runtime environments and multi-origin safe routing.</p>
+                    <p><span class="text-neongreen">• NUMERIC PRECISION ALGORITHM:</span> Solved floating-point arithmetic overflow by implementing 4-decimal precision bounds.</p>
+                    <p><span class="text-neongreen">• DATABASE HARDENING:</span> Re-architected schema types to NUMERIC(12,4) for complete data integrity and zero-rounding drift[cite: 2].</p>
+                    <p><span class="text-neongreen">• CYBER AUTHENTICATION:</span> Secured token verification protocols with isolated Client IDs and protected origins.</p>
+                    <p><span class="text-neongreen">• AD-TECH MONETIZATION ARRAY:</span> Integrated multi-threaded security and monetization vectors.</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center text-xs code-font text-gray-500 border-t border-cyberborder pt-4 gap-2">
+                <div>TIMESTAMP: 2026-10-01 // SIGNATURE: AI_COLLABORATOR_CORE_V2026[cite: 2]</div>
+                <div class="text-neongreen font-bold">SECURITY CLEARANCE: LEVEL 5 // AUTHORIZED[cite: 2]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Gateway & Authentication Section -->
+    <section id="gateway" class="container mx-auto px-6 py-16 max-w-3xl">
+        <div class="cyber-card rounded-xl p-8">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-cyberborder">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-neongreen"></div>
+                    <span class="code-font text-xs text-gray-400 mr-2">SECURE_AUTH_GATEWAY_v4.2</span>
+                </div>
+                <div id="selected-badge" class="code-font text-xs text-neongreen bg-cyberborder px-3 py-1 rounded border border-cyberborder">
+                    STATUS: WAITING FOR SELECTION
+                </div>
+            </div>
+
+            <!-- Web3Forms Form -->
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="apikey" value="cd7d0f10-38c2-467f-a674-1c5cf38791e5">
+                <input type="hidden" name="subject" value="New Client Request from GhostPay Terminal">
+                <input type="hidden" name="from_name" value="GhostPay Security Core">
+                
+                <!-- Hidden Field to Capture Selected Tier -->
+                <input type="hidden" id="tier-input" name="Selected_Tier" value="No Tier Selected">
+
+                <div>
+                    <label class="block code-font text-xs text-gray-400 mb-2">ENTER SECURE EMAIL FOR DEPLOYMENT & VERIFICATION:</label>
+                    <input type="email" name="email" required placeholder="operator@domain.com" class="w-full bg-[#030508] border border-cyberborder rounded px-4 py-3 text-white code-font focus:outline-none focus:border-neongreen transition-colors">
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded bg-neongreen text-black code-font font-bold text-base hover:bg-white transition-all shadow-lg shadow-neongreen/10">
+                    INITIALIZE SECURE HANDSHAKE
+                </button>
+            </form>
+
+            <div id="success-msg" class="hidden mt-6 p-4 rounded bg-neongreen/10 border border-neongreen text-neongreen code-font text-center text-sm">
+                [SUCCESS] Handshake package transmitted to KingofMachineError. Standby for direct contact.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-cyberborder py-8 text-center text-xs code-font text-gray-500">
+        © 2026 GHOSTPAY. ALL RIGHTS RESERVED. ARCHITECTED BY KINGOFMACHINEERROR.
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        function selectTier(tierName) {
+            document.getElementById('tier-input').value = tierName;
+            const badge = document.getElementById('selected-badge');
+            badge.innerText = "SELECTED: " + tierName;
+            badge.classList.remove('text-neongreen');
+            badge.classList.add('text-white', 'border-neongreen');
+            
+            // Scroll smoothly to gateway
+            document.getElementById('gateway').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('success-msg').classList.remove('hidden');
+                    form.reset();
+                } else {
+                    alert('Transmission failed. Please retry.');
+                }
+            }).catch(error => {
+                alert('Network connection error.');
+            });
+        }
+    </script>
 </body>
 </html>
