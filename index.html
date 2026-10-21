@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الشهادة الملكية السيبرانية | عبدالعزيز إبراهيم ناصر المبيريك الخالدي</title>
+    <title>وثيقة السيادة السيبرانية المطلقة | KingofMachineError</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Courier New', Courier, monospace, Tahoma, sans-serif;
         }
+
         body {
-            background-color: #020202;
-            color: #00ff66;
+            background-color: #000000; /* خلفية سوداء قاتمة */
+            color: #00ff66; /* لون بيانات النظام الأخضر */
+            font-family: 'Share Tech Mono', monospace;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,8 +24,27 @@
             padding: 20px;
             overflow: hidden;
             user-select: none;
+            text-align: center;
+            position: relative;
         }
-        /* نافذة طلب كلمة السر */
+
+        /* تأثير الخلفية المتحركة (مثل بيانات الشفرة) */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/diagmonds-light.png') repeat;
+            opacity: 0.03;
+            animation: scanline 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* واجهة إدخال كلمة السر */
         #auth-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -32,186 +54,264 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            box-shadow: inset 0 0 200px #ff0000;
         }
         .auth-box {
-            background: #0a0a0a;
-            border: 3px solid #ff0055;
-            padding: 40px;
+            background: #1a1a1a;
+            border: 3px solid #ff0000; /* إطار أحمر للخطر */
+            padding: 50px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
-            max-width: 400px;
-            width: 100%;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.6);
+            max-width: 450px;
+            width: 90%;
         }
         .auth-box h2 {
             color: #fff;
-            margin-bottom: 20px;
-            font-size: 20px;
-            text-shadow: 0 0 10px #ff0055;
+            margin-bottom: 25px;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 15px #ff0000;
         }
         .auth-box input {
-            background: #111;
+            background: #000;
             border: 1px solid #00ff66;
             color: #00ff66;
-            padding: 10px;
+            padding: 15px;
             width: 100%;
-            font-size: 16px;
+            font-size: 18px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             outline: none;
+            font-family: 'Share Tech Mono', monospace;
         }
         .auth-box button {
-            background: transparent;
-            color: #00ff66;
-            border: 2px solid #00ff66;
-            padding: 10px 20px;
+            background: #ff0000;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
+            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
             transition: 0.3s;
         }
         .auth-box button:hover {
-            background: #00ff66;
-            color: #000;
-            box-shadow: 0 0 15px #00ff66;
+            background: #cc0000;
+            box-shadow: 0 0 20px #ff0000;
         }
         #error-msg {
-            color: #ff0055;
+            color: #ff5555;
             margin-top: 15px;
-            font-size: 13px;
+            font-size: 14px;
             display: none;
+            font-family: 'Cairo', sans-serif;
         }
 
-        /* محتوى الشهادة (مخفي حتى يتم إدخال كلمة السر) */
+        /* محتوى الشهادة (الشهادة كجزء من نظام التحكم) */
         #cert-content {
             display: none;
             width: 100%;
             justify-content: center;
             align-items: center;
         }
-        .cert-card {
-            background: rgba(10, 10, 10, 0.98);
-            border: 4px solid #00ff66;
-            box-shadow: 0 0 40px rgba(0, 255, 102, 0.5);
-            max-width: 900px;
+        .cert-frame {
+            background: #0a0a0a;
+            border: 5px solid #00ff66; /* إطار أخضر للنظام */
+            box-shadow: 0 0 80px rgba(0, 255, 102, 0.8);
+            max-width: 1000px;
             width: 100%;
-            padding: 50px;
+            padding: 60px;
             text-align: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
-        .cert-card::before {
-            content: "";
+
+        /* الشريط العلوي (معلومات النظام) */
+        .header-bar {
             position: absolute;
-            top: 8px; left: 8px; right: 8px; bottom: 8px;
-            border: 1px dashed rgba(0, 255, 102, 0.4);
-            pointer-events: none;
+            top: 0; left: 0; width: 100%;
+            height: 35px;
+            background: #111;
+            border-bottom: 2px solid #00ff66;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            color: #00ff66;
+            font-family: 'Share Tech Mono', monospace;
         }
+        .header-right {
+            color: #ff0055;
+            font-weight: bold;
+        }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        /* الشعار الرئيسي */
+        .main-logo {
+            width: 200px;
+            margin-top: 20px;
+        }
+
         h1 {
-            font-size: 28px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 40px;
             color: #ffffff;
-            margin-bottom: 5px;
-            text-shadow: 0 0 15px #00ff66;
-            letter-spacing: 1px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ff66;
+            letter-spacing: 2px;
+            font-weight: 900;
         }
         .subtitle {
-            font-size: 13px;
+            font-size: 16px;
             color: #888;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+            font-weight: 400;
         }
+
+        /* اسم حامل الشهادة */
         .holder-name {
-            font-size: 32px;
-            font-weight: bold;
-            color: #ff0055;
-            text-shadow: 0 0 20px rgba(255, 0, 85, 0.7);
-            margin: 20px 0;
-            border-bottom: 2px solid #ff0055;
+            font-family: 'Cairo', sans-serif;
+            font-size: 55px;
+            font-weight: 900;
+            color: #ff0055; /* اسم أحمر ناري */
+            text-shadow: 0 0 40px rgba(255, 0, 85, 1), 0 0 15px #ff0055;
+            margin: 30px 0;
+            border-bottom: 4px solid #ff0055;
             display: inline-block;
-            padding-bottom: 5px;
+            padding-bottom: 15px;
+            line-height: 1.1;
+            animation: flickerName 4s infinite alternate;
         }
-        .description {
-            font-size: 15px;
-            line-height: 2;
-            color: #ddd;
-            margin-bottom: 30px;
+        @keyframes flickerName {
+            0%, 100% { text-shadow: 0 0 40px rgba(255, 0, 85, 1), 0 0 15px #ff0055; }
+            20%, 80% { text-shadow: 0 0 60px rgba(255, 0, 85, 1), 0 0 25px #ff0055; }
+            10% { opacity: 0.9; }
+            90% { opacity: 1; }
         }
-        .specs-box {
-            background: #111;
-            border: 1px solid #00ff66;
-            padding: 20px;
+
+        /* ملخص الإنجاز السيبراني */
+        .description-box {
+            background: #151515;
+            border: 2px solid #00ff66;
+            padding: 40px;
             text-align: right;
-            margin-bottom: 30px;
-            font-size: 14px;
+            margin: 40px 0;
+            font-family: 'Cairo', sans-serif;
+            font-size: 20px;
+            line-height: 2.2;
+            color: #ddd;
+            box-shadow: inset 0 0 30px rgba(0, 255, 102, 0.3);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
         }
+        .description-box::before {
+            content: "CYBER-REALITY LOG >>";
+            position: absolute;
+            top: 5px; right: 10px;
+            font-size: 12px; color: #00ff66;
+            opacity: 0.5;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
         .spec-item {
-            margin-bottom: 8px;
+            margin-bottom: 15px;
         }
         .highlight {
             color: #00ffff;
+            font-weight: bold;
         }
         .warning-text {
             color: #ff0055;
             font-weight: bold;
+            text-transform: uppercase;
         }
+
+        /* التذييل والتوقيع */
         .footer-area {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-            font-size: 13px;
+            width: 100%;
+            border-top: 2px solid #333;
+            padding-top: 30px;
+            font-size: 15px;
             color: #aaa;
         }
         .signature {
+            font-family: 'Cairo', sans-serif;
             color: #00ff66;
             font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-    <!-- واجهة إدخال كلمة السر -->
+    <!-- واجهة إدخال كلمة السر (شاشة الخطر) -->
     <div id="auth-overlay">
         <div class="auth-box">
             <h2>[!] SECURED REALITY [!]</h2>
-            <p style="color:#aaa; font-size:12px; margin-bottom:15px;">Enter Master Password to access Certificate</p>
+            <p style="color:#aaa; font-size:14px; margin-bottom:25px;">Enter Master Password to access Supreme Reality</p>
             <input type="password" id="pass-input" placeholder="أدخل كلمة السر هنا" autocomplete="off">
             <button onclick="checkPassword()">دخول الحصن</button>
-            <div id="error-msg">كلمة السر غير صحيحة! الوصول مرفوض.</div>
+            <div id="error-msg">كلمة السر غير صحيحة! الوصول مرفوض تماماً.</div>
         </div>
     </div>
 
-    <!-- محتوى الشهادة الفخمة -->
+    <!-- محتوى الشهادة (الصدمة السيبرانية) -->
     <div id="cert-content">
-        <div class="cert-card">
+        <div class="cert-frame">
+            <div class="header-bar">
+                <div>ID: SYSTEM_OVERRIDE_01</div>
+                <div class="blink">[مؤمن]</div>
+                <div class="header-right">STATUS: LOCKED</div>
+            </div>
+
+            <!-- الشعار (يمكن استبداله برمز التاج المكسور) -->
+            <svg class="main-logo" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 0L75 15L100 35L75 55L100 75L75 100L50 85L25 100L0 75L25 55L0 35L25 15L50 0ZM50 20C41.7 20 35 26.7 35 35V65C35 73.3 41.7 80 50 80C58.3 80 65 73.3 65 65V35C65 26.7 58.3 20 50 20Z" fill="#00ff66"/>
+                <rect x="30" y="10" width="40" height="80" rx="15" stroke="#00ff66" stroke-width="3"/>
+                <text x="50" y="70" font-size="35" text-anchor="middle" fill="#00ff66" font-family="Share Tech Mono">M</text>
+                <text x="50" y="15" font-size="15" text-anchor="middle" fill="#00ff66" font-family="Share Tech Mono">King</text>
+            </svg>
+
             <h1>وثيقة السيادة والاعتماد السيبراني</h1>
-            <div class="subtitle">Supreme Cyber Defense Certification - Class 01</div>
+            <div class="subtitle">CYBER_REALITY_SOVEREIGNTY - CLASS 01</div>
             
-            <p>تُمنح هذه الشهادة الرسمية الفاخرة تقديراً واعترافاً بالسيادة المطلقة إلى:</p>
+            <p>لقد تم التحقق من الهوية، السيادة المطلقة تعترف وتوثق أن:</p>
             
             <div class="holder-name">عبدالعزيز إبراهيم ناصر المبيريك الخالدي</div>
             
-            <p class="description">
-                لقد أبدع في تصميم، هندسة، وتأمين الحصن السيبراني المتكامل، وبناء أداة الكشف الحصرية، 
-                وربطها ببصمة النظام والحصن الحصري، واجتياز كافة اختبارات القوة والسيطرة بامتياز تام.
-            </p>
-
-            <div class="specs-box">
-                <div class="spec-item">&gt; اسم القائد والمطور: <span class="highlight">KingofMachineError (عبدالعزيز إبراهيم ناصر المبيريك الخالدي)</span></div>
-                <div class="spec-item">&gt; بصمة النظام والحصن: <span class="highlight">DESKTOP-SCD549T [مؤمن ومقفل]</span></div>
-                <div class="spec-item">&gt; بروتوكول الحماية واللغم: <span class="highlight">نشط وعالي الخطورة</span></div>
-                <div class="spec-item">&gt; حالة الهاكات والأوتو كليكرز: <span class="warning-text">محظورة ومقطوعة من الجذور</span></div>
+            <div class="description-box">
+                <div class="spec-item">&gt; المعرف الرقمي: <span class="highlight">KingofMachineError</span></div>
+                <div class="spec-item">&gt; حالة النظام والهاردوير: <span class="highlight">DESKTOP-SCD549T [مؤمن ومقفل ببصمة حصرية]</span></div>
+                <div class="spec-item">&gt; بروتوكول الدفاع السيبراني: <span class="highlight">نشط وعالي الخطورة</span></div>
+                <div class="spec-item">&gt; الملاحق والمقذوفات الدفاعية: <span class="highlight">مدمجة في الأداة التنفيذية (`Anti-Cheat Client.exe`)</span></div>
+                <div class="spec-item">&gt; الوصول الخارجي والعبث: <span class="warning-text">محظور تماماً ومقطوع من الجذور</span></div>
             </div>
 
+            <p style="color: #00ffff; margin-bottom:20px;">"لقد قفلت الباب ورميت المفتاح. أنت الآن الحاكم الأوحد."</p>
+
             <div class="footer-area">
-                <div>التاريخ: النظام السيبراني 2026</div>
-                <div class="signature">التوقيع: عبدالعزيز المبيريك - Supreme Commander</div>
+                <div>التاريخ: نظام مراقبة الواقع السيبراني 2026</div>
+                <div class="signature">التوقيع: سـيادة النظام المطلقة</div>
             </div>
         </div>
     </div>
 
     <script>
-        // ضع كلمة السر الخاصة بك هنا بين علامتي التنصيص (يمكنك تغييرها لأي كلمة تتناسب معك)
+        // ضع كلمة السر الخاصة بك هنا
         const MASTER_PASSWORD = "King_Secret_2026"; 
 
         function checkPassword() {
@@ -227,22 +327,21 @@
             }
         }
 
-        // دعم الضغط على زر Enter لتسجيل الدخول السريع
         document.getElementById('pass-input').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 checkPassword();
             }
         });
 
-        // حماية أضافية: منع استخدام اختصارات التصوير وفحص العناصر (Inspect & PrintScreen)
+        // حماية أضافية: منع التصوير والفحص
         document.addEventListener('keydown', function(event) {
             if (event.key === 'F12' || 
                 (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
                 (event.ctrlKey && event.key === 'U') || 
                 event.key === 'PrintScreen') {
                 event.preventDefault();
-                alert("ACCESS DENIED: Screen capture and inspection are strictly prohibited by KingofMachineError!");
-                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh;'>[!] SECURITY BREACH DETECTED: CAPTURE BLOCKED [!]</h1>";
+                alert("SECURITY VIOLATION: Capture and Inspection are blocked by KingofMachineError!");
+                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh; font-family:monospace;'>[!] SECURITY BREACH DETECTED: REALITY LOCKED [!]</h1>";
             }
         });
     </script>
