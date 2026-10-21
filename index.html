@@ -27,6 +27,22 @@
             text-align: center;
         }
 
+        /* طبقة حجب الرؤية في حال محاولة التصوير أو مغادرة الصفحة */
+        #anti-capture-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 99999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            color: #ff0000;
+            font-family: 'Cairo', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            text-shadow: 0 0 20px #ff0000;
+        }
+
         /* نافذة تسجيل الدخول - مربع أخضر فخم */
         #auth-overlay {
             position: fixed;
@@ -150,12 +166,17 @@
 </head>
 <body oncontextmenu="return false;">
 
+    <!-- شاشة الطوارئ لحجب التصوير -->
+    <div id="anti-capture-overlay">
+        [!] تَمَّ رَصْدُ مُحَاوَلَةِ تَصْوِيرٍ.. حُظِرَتِ الشَّاشَةُ [!]
+    </div>
+
     <!-- واجهة تسجيل الدخول (اسمك + علم السعودية + كلمة السر) -->
     <div id="auth-overlay">
         <div class="auth-box">
             <div class="name-flag-header">
                 عبدالعزيز إبراهيم ناصر المبيريك<br>
-                  SA
+                🇸🇦 SA
             </div>
             <input type="password" id="pass-input" placeholder="أدخل كلمة السر" autocomplete="off">
             <button onclick="checkPassword()">دخول</button>
@@ -177,7 +198,6 @@
     </div>
 
     <script>
-        // كلمة السر الخاصة بك
         const MASTER_PASSWORD = "King_Secret_2026"; 
 
         function checkPassword() {
@@ -199,17 +219,36 @@
             }
         });
 
-        // حماية ضد التصوير وفحص العناصر
+        // --- درع منع التصوير المتقدم (كمبيوتر وجوال) ---
+        const blocker = document.getElementById('anti-capture-overlay');
+
+        // 1. منع أزرار التصوير وفحص العناصر
         document.addEventListener('keydown', function(event) {
             if (event.key === 'F12' || 
                 (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
                 (event.ctrlKey && event.key === 'U') || 
-                event.key === 'PrintScreen') {
+                event.key === 'PrintScreen' ||
+                (event.metaKey && event.shiftKey && event.key === '3')) { // لقطة شاشة للماك
                 event.preventDefault();
-                alert("التصوير والفحص محظور تماماً!");
-                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh;'>[!] تم حظر المحاولة [!]</h1>";
+                triggerBlocker();
             }
         });
+
+        // 2. تفعيل الشاشة السوداء إذا حاول المستخدم الخروج من نافذة الموقع أو أخذ لقطة
+        window.addEventListener('blur', function() {
+            blocker.style.display = 'flex';
+        });
+
+        window.addEventListener('focus', function() {
+            blocker.style.display = 'none';
+        });
+
+        function triggerBlocker() {
+            blocker.style.display = 'flex';
+            setTimeout(() => {
+                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:40vh; font-family:Cairo;'>[!] تم رصد محاولة انتهاك أمني.. انتهى الأمر [!]</h1>";
+            }, 1000);
+        }
     </script>
 
 </body>
