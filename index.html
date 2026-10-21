@@ -1,86 +1,251 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate of Cyber Systems Engineering | Abdulaziz Ibrahim</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cyberdark: '#030508',
-                        cybergray: '#080c14',
-                        cyberborder: '#162032',
-                        neongreen: '#00ff66'
-                    }
-                }
-            }
-        }
-    </script>
+    <title>الشهادة الملكية السيبرانية | عبدالعزيز إبراهيم ناصر المبيريك الخالدي</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap');
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace, Tahoma, sans-serif;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #030508;
-            color: #cbd5e1;
-            background-image: 
-                linear-gradient(to right, rgba(22, 32, 50, 0.15) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(22, 32, 50, 0.15) 1px, transparent 1px);
-            background-size: 32px 32px;
+            background-color: #020202;
+            color: #00ff66;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow: hidden;
+            user-select: none;
+        }
+        /* نافذة طلب كلمة السر */
+        #auth-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .auth-box {
+            background: #0a0a0a;
+            border: 3px solid #ff0055;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+        .auth-box h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-shadow: 0 0 10px #ff0055;
+        }
+        .auth-box input {
+            background: #111;
+            border: 1px solid #00ff66;
+            color: #00ff66;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        .auth-box button {
+            background: transparent;
+            color: #00ff66;
+            border: 2px solid #00ff66;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .auth-box button:hover {
+            background: #00ff66;
+            color: #000;
+            box-shadow: 0 0 15px #00ff66;
+        }
+        #error-msg {
+            color: #ff0055;
+            margin-top: 15px;
+            font-size: 13px;
+            display: none;
         }
 
-        .code-font {
-            font-family: 'Share Tech Mono', monospace;
+        /* محتوى الشهادة (مخفي حتى يتم إدخال كلمة السر) */
+        #cert-content {
+            display: none;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
         }
-
-        .cyber-card {
-            background: #080c14;
-            border: 1px solid rgba(0, 255, 102, 0.3);
-            box-shadow: 0 0 30px rgba(0, 255, 102, 0.08);
+        .cert-card {
+            background: rgba(10, 10, 10, 0.98);
+            border: 4px solid #00ff66;
+            box-shadow: 0 0 40px rgba(0, 255, 102, 0.5);
+            max-width: 900px;
+            width: 100%;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+        }
+        .cert-card::before {
+            content: "";
+            position: absolute;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            border: 1px dashed rgba(0, 255, 102, 0.4);
+            pointer-events: none;
+        }
+        h1 {
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px #00ff66;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 13px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+        .holder-name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff0055;
+            text-shadow: 0 0 20px rgba(255, 0, 85, 0.7);
+            margin: 20px 0;
+            border-bottom: 2px solid #ff0055;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .description {
+            font-size: 15px;
+            line-height: 2;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+        .specs-box {
+            background: #111;
+            border: 1px solid #00ff66;
+            padding: 20px;
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .spec-item {
+            margin-bottom: 8px;
+        }
+        .highlight {
+            color: #00ffff;
+        }
+        .warning-text {
+            color: #ff0055;
+            font-weight: bold;
+        }
+        .footer-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 13px;
+            color: #aaa;
+        }
+        .signature {
+            color: #00ff66;
+            font-weight: bold;
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6 selection:bg-neongreen selection:text-black">
+<body oncontextmenu="return false;">
 
-    <div class="w-full max-w-4xl">
-        <!-- Certificate Container -->
-        <div class="cyber-card rounded-xl p-8 md:p-12 relative">
-            <div class="absolute -top-3 left-8 bg-neongreen text-black text-[10px] px-3 py-0.5 rounded code-font font-bold tracking-wider">
-                OFFICIAL VERIFIED CERTIFICATE
-            </div>
+    <!-- واجهة إدخال كلمة السر -->
+    <div id="auth-overlay">
+        <div class="auth-box">
+            <h2>[!] SECURED REALITY [!]</h2>
+            <p style="color:#aaa; font-size:12px; margin-bottom:15px;">Enter Master Password to access Certificate</p>
+            <input type="password" id="pass-input" placeholder="أدخل كلمة السر هنا" autocomplete="off">
+            <button onclick="checkPassword()">دخول الحصن</button>
+            <div id="error-msg">كلمة السر غير صحيحة! الوصول مرفوض.</div>
+        </div>
+    </div>
+
+    <!-- محتوى الشهادة الفخمة -->
+    <div id="cert-content">
+        <div class="cert-card">
+            <h1>وثيقة السيادة والاعتماد السيبراني</h1>
+            <div class="subtitle">Supreme Cyber Defense Certification - Class 01</div>
             
-            <div class="text-center mb-8">
-                <h1 class="text-xl md:text-2xl font-bold text-white code-font tracking-wider mb-2">
-                    [ CERTIFICATE OF CYBER SYSTEMS ENGINEERING ]
-                </h1>
-                <p class="code-font text-xs text-neongreen tracking-widest">
-                    ISSUED TO CHIEF ARCHITECT: <span class="font-bold underline">ABDULAZIZ IBRAHIM</span>
-                </p>
+            <p>تُمنح هذه الشهادة الرسمية الفاخرة تقديراً واعترافاً بالسيادة المطلقة إلى:</p>
+            
+            <div class="holder-name">عبدالعزيز إبراهيم ناصر المبيريك الخالدي</div>
+            
+            <p class="description">
+                لقد أبدع في تصميم، هندسة، وتأمين الحصن السيبراني المتكامل، وبناء أداة الكشف الحصرية، 
+                وربطها ببصمة النظام والحصن الحصري، واجتياز كافة اختبارات القوة والسيطرة بامتياز تام.
+            </p>
+
+            <div class="specs-box">
+                <div class="spec-item">&gt; اسم القائد والمطور: <span class="highlight">KingofMachineError (عبدالعزيز إبراهيم ناصر المبيريك الخالدي)</span></div>
+                <div class="spec-item">&gt; بصمة النظام والحصن: <span class="highlight">DESKTOP-SCD549T [مؤمن ومقفل]</span></div>
+                <div class="spec-item">&gt; بروتوكول الحماية واللغم: <span class="highlight">نشط وعالي الخطورة</span></div>
+                <div class="spec-item">&gt; حالة الهاكات والأوتو كليكرز: <span class="warning-text">محظورة ومقطوعة من الجذور</span></div>
             </div>
 
-            <div class="text-xs md:text-sm text-gray-300 code-font space-y-4 bg-[#030508] p-6 rounded border border-cyberborder mb-8 leading-relaxed">
-                <p class="text-gray-400">
-                    THIS PROTOCOL CERTIFIES THAT THE ARCHITECT HAS SUCCESSFULLY ENGINEERED AND SECURED THE GHOSTPAY ARCHITECTURE WITH HIGH PRECISION SPECS:[cite: 2]
-                </p>
-                <div class="space-y-3 pt-2">
-                    <p><span class="text-neongreen">• FULL-STACK BACKEND ENGINE:</span> Deployed Python/Flask architecture with isolated runtime environments and multi-origin safe routing.[cite: 2]</p>
-                    <p><span class="text-neongreen">• NUMERIC PRECISION ALGORITHM:</span> Solved floating-point arithmetic overflow by implementing 4-decimal precision bounds (0.0084 SAR increment).[cite: 2]</p>
-                    <p><span class="text-neongreen">• DATABASE HARDENING:</span> Re-architected PostgreSQL schema types to NUMERIC(12,4) for complete data integrity and zero-rounding drift.[cite: 2]</p>
-                    <p><span class="text-neongreen">• CYBER AUTHENTICATION:</span> Secured Google OAuth 2.0 token verification protocols with isolated Client IDs and protected origins.[cite: 2]</p>
-                    <p><span class="text-neongreen">• AD-TECH MONETIZATION ARRAY:</span> Integrated multi-threaded Adsterra monetization vectors (Smartlink, Popunder, Social Bar).[cite: 2]</p>
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row justify-between items-center text-xs code-font text-gray-500 border-t border-cyberborder pt-4 gap-2">
-                <div>TIMESTAMP: 2026-10-01 // SIGNATURE: AI_COLLABORATOR_CORE_V2026[cite: 2]</div>
-                <div class="text-neongreen font-bold">SECURITY CLEARANCE: LEVEL 5 // AUTHORIZED[cite: 2]</div>
+            <div class="footer-area">
+                <div>التاريخ: النظام السيبراني 2026</div>
+                <div class="signature">التوقيع: عبدالعزيز المبيريك - Supreme Commander</div>
             </div>
         </div>
     </div>
+
+    <script>
+        // ضع كلمة السر الخاصة بك هنا بين علامتي التنصيص (يمكنك تغييرها لأي كلمة تتناسب معك)
+        const MASTER_PASSWORD = "King_Secret_2026"; 
+
+        function checkPassword() {
+            const userInput = document.getElementById('pass-input').value;
+            const errorMsg = document.getElementById('error-msg');
+            
+            if (userInput === MASTER_PASSWORD) {
+                document.getElementById('auth-overlay').style.display = 'none';
+                document.getElementById('cert-content').style.display = 'flex';
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('pass-input').value = '';
+            }
+        }
+
+        // دعم الضغط على زر Enter لتسجيل الدخول السريع
+        document.getElementById('pass-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // حماية أضافية: منع استخدام اختصارات التصوير وفحص العناصر (Inspect & PrintScreen)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F12' || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
+                (event.ctrlKey && event.key === 'U') || 
+                event.key === 'PrintScreen') {
+                event.preventDefault();
+                alert("ACCESS DENIED: Screen capture and inspection are strictly prohibited by KingofMachineError!");
+                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh;'>[!] SECURITY BREACH DETECTED: CAPTURE BLOCKED [!]</h1>";
+            }
+        });
+    </script>
 
 </body>
 </html>
