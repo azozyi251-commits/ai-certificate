@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وثيقة السيادة السيبرانية | KingofMachineError</title>
+    <title>وثيقة هندسة سيبرانية | عبدالعزيز إبراهيم ناصر المبيريك</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
@@ -27,7 +27,7 @@
             text-align: center;
         }
 
-        /* نافذة طلب كلمة السر والشعار داخل مربع أخضر بالكامل */
+        /* نافذة تسجيل الدخول - مربع أخضر فخم */
         #auth-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -39,32 +39,28 @@
             z-index: 9999;
         }
         .auth-box {
-            background: #050f05;
+            background: #030a03;
             border: 3px solid #00ff66;
             padding: 50px;
             text-align: center;
-            box-shadow: 0 0 40px rgba(0, 255, 102, 0.4);
+            box-shadow: 0 0 50px rgba(0, 255, 102, 0.4);
             max-width: 450px;
             width: 90%;
         }
-        .saudi-emblem {
-            font-size: 70px;
-            color: #00ff66;
-            margin-bottom: 20px;
-            text-shadow: 0 0 15px #00ff66;
-        }
-        .auth-box h2 {
+        .name-flag-header {
+            font-family: 'Cairo', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
             color: #00ff66;
             margin-bottom: 25px;
-            font-size: 20px;
-            font-family: 'Cairo', sans-serif;
-            text-shadow: 0 0 10px #00ff66;
+            text-shadow: 0 0 15px #00ff66;
+            line-height: 1.5;
         }
         .auth-box input {
             background: #000;
             border: 2px solid #00ff66;
             color: #00ff66;
-            padding: 12px;
+            padding: 15px;
             width: 100%;
             font-size: 18px;
             text-align: center;
@@ -76,7 +72,7 @@
             background: transparent;
             color: #00ff66;
             border: 2px solid #00ff66;
-            padding: 12px 25px;
+            padding: 12px 30px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
@@ -88,7 +84,7 @@
         .auth-box button:hover {
             background: #00ff66;
             color: #000;
-            box-shadow: 0 0 20px #00ff66;
+            box-shadow: 0 0 25px #00ff66;
         }
         #error-msg {
             color: #ff0055;
@@ -98,7 +94,7 @@
             font-family: 'Cairo', sans-serif;
         }
 
-        /* محتوى الشهادة */
+        /* محتوى الشهادة - مربع أخضر */
         #cert-content {
             display: none;
             width: 100%;
@@ -106,10 +102,10 @@
             align-items: center;
         }
         .cert-frame {
-            background: #0a0a0a;
+            background: #030a03;
             border: 4px solid #00ff66;
-            box-shadow: 0 0 60px rgba(0, 255, 102, 0.6);
-            max-width: 950px;
+            box-shadow: 0 0 60px rgba(0, 255, 102, 0.5);
+            max-width: 800px;
             width: 100%;
             padding: 60px;
             text-align: center;
@@ -119,92 +115,69 @@
             align-items: center;
             gap: 30px;
         }
-        h1 {
+        .cert-text {
             font-family: 'Cairo', sans-serif;
-            font-size: 35px;
+            font-size: 26px;
+            font-weight: 700;
             color: #ffffff;
-            margin-bottom: 10px;
+            line-height: 2.2;
             text-shadow: 0 0 15px #00ff66;
         }
-        .holder-name {
-            font-family: 'Cairo', sans-serif;
-            font-size: 45px;
-            font-weight: 900;
+        .holder-name-cert {
             color: #00ff66;
+            font-weight: 900;
+            font-size: 36px;
             text-shadow: 0 0 25px #00ff66;
-            margin: 20px 0;
-            border-bottom: 3px solid #00ff66;
+            border-bottom: 2px solid #00ff66;
+            padding-bottom: 5px;
             display: inline-block;
-            padding-bottom: 10px;
+            margin-top: 10px;
         }
-        .description-box {
-            background: #111;
-            border: 2px solid #00ff66;
-            padding: 30px;
-            text-align: right;
-            margin: 20px 0;
+        .footer-signature {
+            margin-top: 30px;
+            width: 100%;
+            border-top: 1px solid rgba(0, 255, 102, 0.3);
+            padding-top: 20px;
+            display: flex;
+            justify-content: flex-end;
             font-family: 'Cairo', sans-serif;
             font-size: 18px;
-            line-height: 2;
-            color: #ccc;
-            width: 100%;
-        }
-        .highlight {
-            color: #00ffff;
-            font-weight: bold;
-        }
-        .footer-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-            font-size: 14px;
-            color: #aaa;
-            font-family: 'Cairo', sans-serif;
-        }
-        .signature {
             color: #00ff66;
             font-weight: bold;
+            text-shadow: 0 0 10px #00ff66;
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
 
-    <!-- واجهة إدخال كلمة السر بالمربع الأخضر وشعار السيفين والنخلة -->
+    <!-- واجهة تسجيل الدخول (اسمك + علم السعودية + كلمة السر) -->
     <div id="auth-overlay">
         <div class="auth-box">
-            <div class="saudi-emblem">🇸🇦</div>
-            <h2>دُونَ هٰذَا الْحِصْنِ حُدُودٌ مُحَرَّمَةٌ</h2>
+            <div class="name-flag-header">
+                عبدالعزيز إبراهيم ناصر المبيريك<br>
+                🇸🇦 SA
+            </div>
             <input type="password" id="pass-input" placeholder="أدخل كلمة السر" autocomplete="off">
-            <button onclick="checkPassword()">دُخُولُ الْقَلْعَةِ</button>
-            <div id="error-msg">كلمة السر غير صحيحة! الوُصُولُ مَرْفُوضٌ.</div>
+            <button onclick="checkPassword()">دخول</button>
+            <div id="error-msg">كلمة السر غير صحيحة!</div>
         </div>
     </div>
 
-    <!-- محتوى الشهادة -->
+    <!-- محتوى الشهادة (مربع أخضر بالكلام المطلوب والتوقيع فقط) -->
     <div id="cert-content">
         <div class="cert-frame">
-            <div style="font-size: 60px;">🇸🇦</div>
-            <h1>وَثِيقَةُ السِّيَادَةِ وَالِاعْتِمَادِ السَّيْبَرَانِيِّ</h1>
-            
-            <p>تُمنح السيادة المطلقة وتوثق إلى:</p>
-            
-            <div class="holder-name">عبدالعزيز بن إبراهيم بن ناصر المبيريك الخالدي</div>
-            
-            <div class="description-box">
-                <div>&gt; المُعَرِّفُ: <span class="highlight">KingofMachineError</span></div>
+            <div class="cert-text">
+                وثيقة هندسة سيبرانية تمنح الى<br>
+                <span class="holder-name-cert">عبد العزيز ابراهيم ناصر المبيريك</span>
             </div>
-
-            <div class="footer-area">
-                <div>التَّارِيخُ: 2026</div>
-                <div class="signature">التَّوْقِيعُ: AI</div>
+            <div class="footer-signature">
+                التوقيع: AI
             </div>
         </div>
     </div>
 
     <script>
+        // كلمة السر الخاصة بك
         const MASTER_PASSWORD = "King_Secret_2026"; 
 
         function checkPassword() {
@@ -226,14 +199,15 @@
             }
         });
 
+        // حماية ضد التصوير وفحص العناصر
         document.addEventListener('keydown', function(event) {
             if (event.key === 'F12' || 
                 (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
                 (event.ctrlKey && event.key === 'U') || 
                 event.key === 'PrintScreen') {
                 event.preventDefault();
-                alert("التَّصْوِيرُ وَالْفَحْصُ مَحْظُورَانِ تَمَامًا!");
-                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh;'>[!] خَرَقْتَ الْحُدُودَ.. انْتَهَى أَمْرُكَ [!]</h1>";
+                alert("التصوير والفحص محظور تماماً!");
+                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh;'>[!] تم حظر المحاولة [!]</h1>";
             }
         });
     </script>
