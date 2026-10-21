@@ -336,3 +336,59 @@
             <p>بناءً على تفوق الهندسة وحكمة التدبير، تعترف وتوثق السيادة الرقمية المطلقة أن:</p>
             
             <div class="holder-name">عبدالعزيز بن إبراهيم بن ناصر المبيريك الخالدي</div>
+            
+            <div class="description-box">
+                <div class="spec-item">&gt; المُعَرِّفُ الرَّقَمِيُّ الْأَعْلَى: <span class="highlight">KingofMachineError</span></div>
+                <div class="spec-item">&gt; حَالَةُ النِّظَامِ وَالْهَارْدْوِيرِ: <span class="highlight">DESKTOP-SCD549T [مُؤَمَّنٌ وَمُقْفَلٌ بِبَصْمَةٍ حَصْرِيَّةٍ]</span></div>
+                <div class="spec-item">&gt; بْرُوتُوكُولُ الدِّفَاعِ السَّيْبَرَانِيِّ: <span class="highlight">نَشِطٌ وَعَالِي الْخُطُورَةِ (مُضَادٌ لِلْاِخْتِرَاقِ وَالتَّصْوِيرِ)</span></div>
+                <div class="spec-item">&gt; الْأَدَاةُ التَّنْفِيذِيَّةُ (`Anti-Cheat Client.exe`): <span class="highlight">مُدْمَجَةٌ بِاللَّغْمِ الْمَيْدَانِيِّ وَمَحْمِيَّةٌ بِنِظَامِ حَمَايَةِ الأُصُولِ</span></div>
+                <div class="spec-item">&gt; الْوُصُولُ الْخَارِجِيُّ وَالْعَبَثُ: <span class="warning-text">مَحْظُورٌ تَمَامًا وَمَقْطُوعٌ مِنَ الْجُذُورِ دُونَ مَفَاتِيحِ السَّيَادَةِ</span></div>
+            </div>
+
+            <p style="color: #b59410; font-weight: bold; margin-bottom:40px; font-size:26px;">"لا مَمَرَّ وَلَا مَفَرَّ لِلْعَابِثِينَ وَالْمُخْتَرِقِينَ.. أَصْلٌ وَفَصْلٌ وَقُوَّةٌ سَيْبَرَانِيَّةٌ."</p>
+
+            <div class="footer-area">
+                <div>التَّارِيخُ: الْيَوْمُ السَّيْبَرَانِيُّ السُّعُودِيُّ الْمُبَارَكُ 2026</div>
+                <div class="signature">صُنِعَ فِي الْمَمْلَكَةِ الْعَرَبِيَّةِ السُّعُودِيَّةِ</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // كلمة السر الخاصة بك (تستطيع تغييرها هنا)
+        const MASTER_PASSWORD = "King_Secret_2026_Saudi"; 
+
+        function checkPassword() {
+            const userInput = document.getElementById('pass-input').value;
+            const errorMsg = document.getElementById('error-msg');
+            
+            if (userInput === MASTER_PASSWORD) {
+                document.getElementById('auth-overlay').style.display = 'none';
+                document.getElementById('cert-content').style.display = 'flex';
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('pass-input').value = '';
+            }
+        }
+
+        document.getElementById('pass-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // حماية أضافية: منع التصوير والفحص (Anti-Capture & Anti-Inspect)
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F12' || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
+                (event.ctrlKey && event.key === 'U') || 
+                event.key === 'PrintScreen') {
+                event.preventDefault();
+                alert("تَحْذِيرُ أَمْنِيٍّ سُعُودِيٍّ: التَّصْوِيرُ وَالْفَحْصُ مَحْظُورَانِ تَمَامًا بِأَمْرِ KINGOFMACHINEERROR!");
+                document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:20vh; font-family:Amiri,serif;'>[!] اخْتِرَاقٌ لِلْوَاقِعِ السَّيْبَرَانِيِّ.. انْتَهَى أَمْرُكَ [!]</h1>";
+            }
+        });
+    </script>
+
+</body>
+</html>
